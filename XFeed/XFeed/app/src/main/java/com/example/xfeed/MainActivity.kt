@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
                 customViewCallback = callback
                 webView.visibility = View.INVISIBLE
                 root.addView(view, FrameLayout.LayoutParams(MATCH, MATCH))
-                setImmersive(true)
+                applyImmersive(true)
             }
 
             override fun onHideCustomView() = hideCustomView()
@@ -183,10 +183,10 @@ class MainActivity : AppCompatActivity() {
         customViewCallback?.onCustomViewHidden()
         customViewCallback = null
         webView.visibility = View.VISIBLE
-        setImmersive(false)
+        applyImmersive(false)
     }
 
-    private fun setImmersive(on: Boolean) {
+    private fun applyImmersive(on: Boolean) {
         val c = WindowInsetsControllerCompat(window, window.decorView)
         if (on) {
             c.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
